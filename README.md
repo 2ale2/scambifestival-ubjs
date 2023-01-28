@@ -1,5 +1,5 @@
 # Cosa fa questo script
-`updatingdata.py` è in grado di aggiorare automaticamente i file esportati da Pino (l'istanza _selfhostata_ di Baserow) in formato `JSON` sulla base di alcuni semplici file di configurazione.
+`updatingdata.py` è in grado di aggiornare automaticamente i file esportati da Pino (l'istanza _selfhostata_ di Baserow) in formato `JSON` sulla base di alcuni semplici file di configurazione.
 
 ## Come usare questo script
 Il corretto funzionamento di questo script è strettamente determinato dalla corretta formattazione dei file di configurazione `toUpdate.yml` e `tablesInfos.yml`, 
@@ -67,7 +67,7 @@ I nomi dei campi _name_, _id_, _view_id_, _included_ e _filters_ **devono rimane
 
 L'unico valore obbligatorio è l'ID della tabella di riferimento. 
 - Il campo _name_ è personalizzabile (ma è consigliabile usare il nome effettivo della corrispondente tabella su Pino).  
-- Il campo _view_id_ può essere lasciato a 0, qualora non sia necessario fare riferimento a una view;  
+- Il campo _view_id_ può essere lasciato a `0`, qualora non sia necessario fare riferimento a una view;  
 - Il campo _included_, se è una stringa vuota, indica che si considereranno tutte le colonne in fase di aggiornamento;  
 - Il campo _filters_, come da nome, contiene gli eventuali (ulteriori) filtri da applicare, altrimenti è una stringa vuota.
 
@@ -96,8 +96,8 @@ Nota: _se il filtro non possiede una sintassi corretta, viene ignorato._
 2. Qualora il campo _name_ non corrisponda al nome reale della tabella su Pino:
 > Va bene lo stesso, ma serebbe utile per ausiliare l'utente nell'utilizzo dello script.
 3. Qualora il campo _id_ contenga un valore errato (non esistente o scorretto):
-> Se il valore è inesistente, il file associato a tale tabella non viene aggiornato; se il valore esiste ma appartiene ad un'altra tabella, il file verrà aggiornato 
-> ma facendo riferimento ad una tabella errata.
+> Se il valore è inesistente, il file associato a tale tabella non viene aggiornato; se il valore esiste ma appartiene a un'altra tabella, il file verrà aggiornato 
+> ma facendo riferimento a una tabella errata.
 4. Qualora il _view_id_ non sia corretto:
 > Non verrà considerato dallo script.
 5. Qualora il campo _included_ contenga elementi non esistenti nella tabella su Pino:
@@ -180,7 +180,7 @@ Nota: qualora `toUpdate.yml` contenga un elenco di file non aggiornato rispetto 
 
 Lo script offre due modalità di aggiornamento manuale:
 1. **Lista di nomi**: l'utente indica una lista di file da aggiornare nel formato `nomeRiferimentoTabella#1:nomeFile#1,nomeRiferimentoTabella#2:nomeFile#2,...`;
-2. **Lista di numeri**: l'utente visualizza un elenco numerato di file disponibili e indica una lista di numeri, ognuno corrispondente ad un file all'interno 
+2. **Lista di numeri**: l'utente visualizza un elenco numerato di file disponibili e indica una lista di numeri, ognuno corrispondente a un file all'interno 
 dell'elenco, nel formato `#1 #2 ...`.
 
 Nessuna delle modalità manuali consente la creazione di file _ex novo_, per cui l'unico modo per creare file è sfruttare la modalità automatica.
