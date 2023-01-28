@@ -40,7 +40,7 @@ Per disattivare l'ambiente virtuale, è sufficiente usare:
 
 > deactivate
 
-quando un ambiente virtuale attivo.
+quando un ambiente virtuale attivato.
 
 #### _tablesInfos.yml_
 
