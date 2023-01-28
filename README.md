@@ -23,6 +23,7 @@ dove:
 Nota: _siccome questo script è stato progettato con Python v3.11.1 è consigliabile avere questa versione_.
 
 Potremmo dire che un ambiente virtuale sia un piccolo spazio che contiene un interprete Python e un insieme di moduli, che, generalmente, sono quelli esclusivamente necessari ai fini del progetto in cui l'ambiente è stato creato.
+
 Per operare in un ambiente virtuale, è necessario attivarlo, in questo modo:
 
 > source <_nomeAmbiente_>/bin/activate
