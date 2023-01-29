@@ -791,13 +791,13 @@ def update_file_to_github(git: Git, old_file_name: str, new_file_name: str, key:
     script_message = "(SCRIPT MESSAGE) File format not correct: this file needs to be replaced."
     name_to_detect = ""
 
-    sleep(1)
+    sleep(0.7)
     print("\n➔ Processing '" + new_file_name + "' file...")
-    sleep(1)
+    sleep(0.7)
 
     if old_file_name != "":
         print("➔ Getting old file content...")
-        sleep(1)
+        sleep(0.7)
         try:
             contents = git.repo.get_contents("data/{}".format(old_file_name), ref="scripts")
         except github.UnknownObjectException as e:
@@ -815,14 +815,14 @@ def update_file_to_github(git: Git, old_file_name: str, new_file_name: str, key:
 
             print("➔ '" + old_file_name + "' NOT updated. Please check manually to fix that.")
             return None
-        sleep(1)
+        sleep(0.7)
     else:
         name_to_detect = new_file_name.split(".")[0] + ".csv"
 
     if old_file_name.endswith('.csv'):
         was_csv = True
         print("➔ Old file has wrong format (.csv). Deleting it...")
-        sleep(1)
+        sleep(0.7)
         try:
             # noinspection PyUnboundLocalVariable
             deleting_commit = git.repo.delete_file(contents.path, script_message, contents.sha, branch="scripts")
@@ -840,7 +840,7 @@ def update_file_to_github(git: Git, old_file_name: str, new_file_name: str, key:
         # riferimento tabella, lo script sceglierebbe da sé la tabella di riferimento.
         # new_file_name = name_to_detect + "json"
         old_file_name = ""
-        sleep(1)
+        sleep(0.7)
 
     if not old_file_name.endswith('.csv'):
         if old_file_name != "":
@@ -868,7 +868,7 @@ def update_file_to_github(git: Git, old_file_name: str, new_file_name: str, key:
             if uinput.lower() == "y":
                 sleep(0.5)
                 print("\n➔ Deleting detected CSV file '" + name_to_detect + "' from the repo...")
-                sleep(1)
+                sleep(0.7)
                 try:
                     # noinspection PyUnboundLocalVariable
                     deleting_commit = git.repo.delete_file(get_csv.path, script_message, get_csv.sha, branch="scripts")
@@ -877,12 +877,12 @@ def update_file_to_github(git: Git, old_file_name: str, new_file_name: str, key:
                 else:
                     print("\n➔ '" + name_to_detect + "' correctly deleted from the repo!")
             print("\n\tJumping to the next step...\n")
-            sleep(1)
+            sleep(0.7)
 
     if old_file_name == "":
         print("➔ Creating new '" + new_file_name + "' file in the repository...")
         old_file_name = new_file_name
-        sleep(1)
+        sleep(0.7)
         try:
             new_file_commit = git.repo.create_file("data/{}".format(new_file_name),
                                                    "new file (script)",
@@ -911,7 +911,7 @@ def update_file_to_github(git: Git, old_file_name: str, new_file_name: str, key:
     if old_file_name != "" or update is True:
         contents = git.repo.get_contents("data/{}".format(old_file_name), ref="scripts")
         print("➔ Updating '" + old_file_name + "' content...")
-        sleep(1)
+        sleep(0.7)
         try:
             updating_commit = git.repo.update_file(contents.path,
                                                    "updating " + old_file_name,
@@ -927,7 +927,7 @@ def update_file_to_github(git: Git, old_file_name: str, new_file_name: str, key:
             return None
 
     print("➔ " + old_file_name + " correctly updated!\n")
-    sleep(1)
+    sleep(0.7)
     return old_file_name
 
 
@@ -994,7 +994,7 @@ def errors_handler(value: str):
                "\n\tPlease make sure to add all the infos I need in the 'tablesInfos.yml' file.", "yellow")
         sleep(0.4)
         print("\nJumping to the next table...\n")
-    sleep(1)
+    sleep(0.7)
 
 
 if __name__ == "__main__":
