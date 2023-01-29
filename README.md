@@ -3,7 +3,7 @@
 
 ## Come usare questo script
 Il corretto funzionamento di questo script è strettamente determinato dalla corretta formattazione dei file di configurazione `toUpdate.yml` e `tablesInfos.yml`, 
-i quali non devono essere spostati dalla loro attuale posizione nella directory.
+i quali devono essere inseriti all'interno della directory locale `{script_path}/config/` dove `{script_path}` è la directory nella quale si trova il file dello script.
 
 `toUpdate.yml` contiene un elenco dei file da aggiornare, mentre `tablesInfos.yml` contiene le informazioni delle tabelle su Pino cui lo script fa riferimento.
 
@@ -127,7 +127,7 @@ Lo script avvia la procedura automatica facendo riferimento a `toUpdate.yml`, ch
 
 Lo script usa il contenuto attuale della tabella su Pino col nome di riferimento indicato, per aggiornare il file associato; se una riga associata a un file da aggiornare non viene aggiunta a `toUpdate.yml`, tale file non verrà aggiornato.
 
-Lo script associa, al nome della tabella indicata su `toUpdate.yml`, una tabella su Pino, grazie ai riferimenti indicati su `tablesInfos.yml`.
+Lo script associa, al nome della tabella indicata su `toUpdate.yml`, una tabella su Pino, grazie ai riferimenti indicati su `tablesInfos.yml`. Se `toUpdate.yml` non è presente nella [directory indicata](#come-usare-questo-script), non sarà possibile eseguire l'aggiornamento automatico.
 
 I nomi di riferimento delle tabelle sono arbitrari; l'unico vincolo è che essi siano i medesimi su entrambi i file di configurazione, per cui ci si riferisce a una tabella usando **lo stesso** riferimento sia su `toUpdate.yml` che su `tablesInfos.yml`.
 

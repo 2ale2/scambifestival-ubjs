@@ -155,11 +155,9 @@ def menu_prompter(git: Git, tables_infos: dict):
             sleep(0.3)
             uinput = input(arrow)
         if not uinput:
-            source = requests.get(
-                "https://raw.githubusercontent.com/scambifestival/scambi.org/scripts/scripts/updatingdata/toUpdate.yml"
-            )
-            if source.ok:
-                yalm_file = yaml.load(source.text, Loader=yaml.Loader)
+            if os.path.isfile("config/toUpdate.yml") is True:
+                source = open("config/toUpdate.yml", "r")
+                yalm_file = yaml.load(source.read(), Loader=yaml.Loader)
                 print("\nOK! Those files will be processed:\n")
                 count = 1
                 to_update = {}
@@ -190,8 +188,10 @@ def menu_prompter(git: Git, tables_infos: dict):
                     uinput = "quit"
                 elif uinput.lower() == "n":
                     uinput = "help"
+
             else:
-                cprint("\nERROR while getting 'toUpdate.yml' content.\nAuto update cannot be executed.\n", "red")
+                cprint("\nERROR: file 'toUpdate.yml' not found in 'config/' folder\nPlease add it in order to execute"
+                       " auto-update.\n", "red")
                 uinput = "help"
 
         elif uinput == "list":
@@ -753,15 +753,14 @@ def text_fixer(content: str):
 
 
 def get_tables_infos():
-    source = requests.get(
-        "https://raw.githubusercontent.com/scambifestival/scambi.org/scripts/scripts/updatingdata/tablesInfos.yml"
-    )
-    if source.ok:
-        yaml_file = yaml.load(source.text, Loader=yaml.Loader)
+    if os.path.isfile("config/tablesInfos.yml") is True:
+        source = open("config/tablesInfos.yml", "r")
+        yaml_file = yaml.load(source.read(), Loader=yaml.Loader)
         return yaml_file['tables']
     else:
-        cprint("CRITICAL ERROR while parsing 'tablesInfos.yml' file. Please contact @AleLntr on Telegram.", "red")
-        return source
+        cprint("CRITICAL ERROR while parsing 'tablesInfos.yml' file: CONFIGURATION FILE NOT FOUND.\n"
+               "Please add it to the 'config/' folder.", "red")
+        exit(-1)
 
 
 def repo_file_getter(git: Git):
@@ -805,7 +804,7 @@ def update_file_to_github(git: Git, old_file_name: str, new_file_name: str, key:
             if e.status == 404:
                 cprint("\n\tERROR while trying to get old '" + old_file_name + "'", "yellow")
                 cprint("\tGiven file '" + old_file_name + "' was not found in the repository.", "yellow")
-                print("\tJumping to the next step...")
+                print("\tJumping to the next step...\n")
                 name_to_detect = old_file_name.split(".")[0]
                 old_file_name = ""
 
@@ -906,6 +905,7 @@ def update_file_to_github(git: Git, old_file_name: str, new_file_name: str, key:
                 cprint("\n➔ '" + old_file_name + "' NOT updated. Please check manually to fix that.", "red")
                 return None
         else:
+            print("➔ '" + new_file_name + "' correctly created!")
             return new_file_name
 
     if old_file_name != "" or update is True:
