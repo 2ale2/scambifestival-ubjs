@@ -3,7 +3,7 @@
 
 ## Come usare questo script
 Il corretto funzionamento di questo script è strettamente determinato dalla corretta formattazione dei file di configurazione `toUpdate.yml` e `tablesInfos.yml`, 
-i quali devono essere inseriti all'interno della directory locale `{script_path}/config/` dove `{script_path}` è la directory nella quale si trova il file dello script.
+i quali devono essere inseriti all'interno della directory locale `{script_path}/config/` dove `{script_path}` è la directory nella quale si trova `updatingdata.py`.
 
 `toUpdate.yml` contiene un elenco dei file da aggiornare, mentre `tablesInfos.yml` contiene le informazioni delle tabelle su Pino cui lo script fa riferimento.
 
@@ -40,7 +40,7 @@ Per disattivare l'ambiente virtuale, è sufficiente usare:
 
 > deactivate
 
-quando un ambiente virtuale attivato.
+quando un ambiente virtuale è attivato.
 
 #### _tablesInfos.yml_
 
@@ -220,7 +220,7 @@ Nota: _l'aggiornamento automatico di `toUpdate.yml` interessa solamente le righe
 
 ## Funzioni aggiuntive
 ### Elenco tabelle disponibili
-L'utente può richiedere di visualizzare un elenco di nomi disponibili di riferimento delle tabelle digitando `tables` quando concesso.
+L'utente può richiedere di visualizzare un elenco di nomi di riferimento delle tabelle disponibili digitando `tables` quando concesso.
 
 Dopo aver visionato tale elenco, l'utente può procedere all'indicazione della modalità di aggiornamento desiderata.
 
