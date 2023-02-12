@@ -32,6 +32,9 @@ info = colored("ⓘ  ", "green")
 # noinspection SpellCheckingInspection
 def main():
     global cred
+    sleep(1)
+    cprint("\nPLEASE CHECK THE README FILE IN THE GITHUB REPO BEFORE USING THIS TOOL.\n", "red")
+    sleep(2)
     print("----------------------------------------------------------------------------\n")
     print("Hi! This is a small tool to update JSON files in the scambi.org/data repository!")
 
@@ -131,7 +134,7 @@ def credential_gatherer():
 def menu_prompter(git: Git, tables_infos: dict):
     info_text = colored("referenceTableName#1:fileNameToUpdate#1", "light_yellow")
     info_text1 = colored("referenceTableTame#2:fileTameToUpdate#2", "light_blue")
-    print("\nPress ENTER to get 'toUpdate.ylm' file from the repo."
+    print("\nPress ENTER to get 'toUpdate.ylm' file from the config directory."
           "\nAlternatively, you can:")
     print("\t- Type a comma separated list like\n\t\t" + info_text + "," + info_text1 + ",...")
     print("\t- Send 'list' to get a JSON/CSV files list in the 'scambifestival/scambi.org/data/' directory.")
@@ -145,7 +148,7 @@ def menu_prompter(git: Git, tables_infos: dict):
         if uinput == "help":
             print("----------------------------------------------------------------------------\n")
             sleep(1)
-            print("Press ENTER to get 'toUpdate.ylm' file from the repo."
+            print("Press ENTER to get 'toUpdate.ylm' file from the config directory."
                   "\nAlternatively, you can:")
             print("\t- Type a comma separated list like\n\t\t" + info_text + "," + info_text1 + ",...")
             print("\t- Send 'list' to get a JSON/CSV files list in the 'scambifestival/scambi.org/data/' directory.")
